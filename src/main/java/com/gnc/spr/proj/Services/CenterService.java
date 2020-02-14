@@ -31,14 +31,12 @@ public class CenterService {
     public List<Center> findAll(){
         var centersIterator =  centerRepository.findAll();
 
-        var centers = new ArrayList<Center>();
-        centersIterator.forEach(centers::add);
-        return centers;
+        return new ArrayList<Center>(centersIterator);
     }
 
-    public Center findById(int id){
-        Optional<Center> center = centerRepository.findById(id);
-        return center.orElse(null);
+    public Optional<Center> findById(int id){
+        return centerRepository.findById(id);
+
     }
 
 //    public Center update(int id ,String cName){
